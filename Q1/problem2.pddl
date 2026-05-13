@@ -9,17 +9,17 @@
 (:init
     ;todo: put the initial state's facts and numeric values here
     (robot-at robot1 locationA)
-    (package-at package1 locationB)
+    (package-at package1 locationB) 
     (package-at package2 locationB)
     (package-at package3 locationB)
     (delivery-station locationC)
 
     (= (weight package1) 3)
-    (= (weight package2) 3)
-    (= (weight package3) 4)
+    (= (weight package2) 4)
+    (= (weight package3) 5)
 
     (= (size package1) 1)
-    (= (size package2) 2)
+    (= (size package2) 3)
     (= (size package3) 2)
 
     (= (max-weight robot1) 10)
@@ -27,6 +27,8 @@
 
     (= (current-weight robot1) 0)
     (= (current-size robot1) 0)
+    (= (total-cost) 0)
+
 )
 
 (:goal (and
@@ -37,5 +39,5 @@
 ))
 
 ;un-comment the following line if metric is needed
-;(:metric minimize ())
+(:metric minimize (total-cost))
 )

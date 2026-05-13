@@ -3,7 +3,7 @@
 (define (domain warehouse-robotics)
 
 ;remove requirements that are not needed
-(:requirements :strips :typing :fluents :negative-preconditions :adl)
+(:requirements :strips :typing :fluents :negative-preconditions :adl :action-costs :existential-preconditions)
 
 (:types ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle
     robot package location
@@ -29,6 +29,8 @@
 
     (current-weight ?r - robot)
     (current-size ?r - robot)
+
+    (total-cost)
 )
 
 ;define actions here
@@ -38,20 +40,24 @@
                      (= (current-weight ?r) 0)
                      (= (current-size ?r) 0))
     :effect (and (robot-at ?r ?to) 
-                 (not (robot-at ?r ?from)))
+                 (not (robot-at ?r ?from))
+                 (increase (total-cost) 1))
 )
 
 (:action delivery-trip
     :parameters (?r - robot ?from - location ?to - location)
     :precondition (and (delivery-station ?to)
                        (robot-at ?r ?from)
-                       (not (exists (?p - package) (and
-                       (package-at ?p ?from)
-                       (<= (+ (current-weight ?r) (weight ?p)) (max-weight ?r))
-                       (<= (+ (current-size ?r) (size ?p)) (max-size ?r))
-                     ))))
+                       (forall (?p - package) (or
+                        (not (package-at ?p ?from))
+                        (> (+ (current-weight ?r) (weight ?p)) (max-weight ?r))
+                        (> (+ (current-size ?r) (size ?p)) (max-size ?r))
+                        ))
+                    )
     :effect (and (robot-at ?r ?to) 
-                (not (robot-at ?r ?from)))
+                (not (robot-at ?r ?from))
+                (increase (total-cost) 1)
+            )
 )
 
 (:action load
