@@ -16,6 +16,7 @@
     (robot-at ?r - robot ?loc - location)
     (package-at ?p - package ?loc - location)
     (loaded ?r - robot ?p - package)
+    (delivery-station ?loc - location)
 )
 
 
@@ -34,18 +35,20 @@
 (:action move
     :parameters (?r - robot ?from - location ?to - location)
     :precondition (and (robot-at ?r ?from)
-                     (=(current-weight ?r) 0)
+                     (= (current-weight ?r) 0)
                      (= (current-size ?r) 0))
     :effect (and (robot-at ?r ?to) 
-                (not (robot-at ?r ?from)))
+                 (not (robot-at ?r ?from)))
 )
+
 (:action delivery-trip
     :parameters (?r - robot ?from - location ?to - location)
-    :precondition (and (robot-at ?r ?from)
-                     (not (exists (?p - package) (and
-                        (package-at ?p ?from)
-                        (<=(+ (current-weight ?r) (weight ?p)) (max-weight ?r))
-                        (<= (+ (current-size ?r) (size ?p)) (max-size ?r))
+    :precondition (and (delivery-station ?to)
+                       (robot-at ?r ?from)
+                       (not (exists (?p - package) (and
+                       (package-at ?p ?from)
+                       (<= (+ (current-weight ?r) (weight ?p)) (max-weight ?r))
+                       (<= (+ (current-size ?r) (size ?p)) (max-size ?r))
                      ))))
     :effect (and (robot-at ?r ?to) 
                 (not (robot-at ?r ?from)))

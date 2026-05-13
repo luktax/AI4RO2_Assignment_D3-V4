@@ -1,4 +1,4 @@
-(define (problem problem-warehouse_robotics-1) 
+(define (problem problem-warehouse_robotics-2) 
     (:domain warehouse-robotics)
 (:objects 
     robot1 - robot
@@ -12,17 +12,18 @@
     (package-at package1 locationB)
     (package-at package2 locationB)
     (package-at package3 locationB)
-    
-    (= (weight package1) 2)
+    (delivery-station locationC)
+
+    (= (weight package1) 3)
     (= (weight package2) 3)
     (= (weight package3) 4)
 
     (= (size package1) 1)
     (= (size package2) 2)
-    (= (size package3) 3)
+    (= (size package3) 2)
 
-    (= (max-weight robot1) 5)
-    (= (max-size robot1) 3)
+    (= (max-weight robot1) 10)
+    (= (max-size robot1) 5)
 
     (= (current-weight robot1) 0)
     (= (current-size robot1) 0)
