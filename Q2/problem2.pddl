@@ -16,16 +16,12 @@
     (delivery-station delivery1)
     
     ; --- Costanti dei pacchi ---
-    ; Pacco 1: Peso 4
     (= (weight p1) 4.0)
     (= (size p1) 4.0)
     
-    ; Pacco 2: Peso 5
     (= (weight p2) 5.0)
     (= (size p2) 5.0)
-    
-    ; Pacco 3: Peso 4
-    ; TOTALE PESO = 13.0 (Il robot può portare massimo 10.0!)
+
     (= (weight p3) 4.0)
     (= (size p3) 4.0)
     
@@ -33,7 +29,6 @@
     (= (max-weight robot1) 10.0)
     (= (max-size robot1) 10.0)
     
-    ; --- Variabili azzerate alla partenza ---
     (= (current-weight robot1) 0.0)
     (= (current-size robot1) 0.0)
     (= (loading-temp-weight robot1) 0.0)
@@ -44,7 +39,6 @@
   
   (:goal
     (and 
-        ; Tutti i pacchi devono arrivare a destinazione
         (package-at p1 delivery1)
         (package-at p2 delivery1)
         (package-at p3 delivery1)

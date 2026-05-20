@@ -55,7 +55,11 @@
     :parameters (?r - robot ?from - location ?to - location)
     :precondition (and (delivery-station ?to)
                        (robot-at ?r ?from)
-                       (> (current-weight ?r) 0)
+                       (forall (?p - package) (or
+                        (not (package-at ?p ?from))
+                        (> (+ (current-weight ?r) (weight ?p)) (max-weight ?r))
+                        (> (+ (current-size ?r) (size ?p)) (max-size ?r))
+                        ))
                        (not (busy ?r))
                     )
     :effect (and (robot-at ?r ?to) 

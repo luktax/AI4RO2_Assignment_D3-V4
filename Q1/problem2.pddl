@@ -16,10 +16,10 @@
 
     (= (weight package1) 3)
     (= (weight package2) 4)
-    (= (weight package3) 5)
+    (= (weight package3) 2)
 
     (= (size package1) 1)
-    (= (size package2) 3)
+    (= (size package2) 2)
     (= (size package3) 2)
 
     (= (max-weight robot1) 10)

@@ -8,7 +8,6 @@
   )
   
   (:init
-    ; --- Mappa e Posizioni Iniziali ---
     (delivery-station dispatch-1)
     
     (robot-at r1 zone-A)
@@ -26,7 +25,7 @@
     (= (weight p3) 12.0) (= (size p3) 12.0)
     (= (weight p4) 8.0)  (= (size p4) 8.0)
     
-    ; --- Proprietà Robot 1 (Piccolo) ---
+    ; --- Proprietà Robot 1 ---
     (= (max-weight r1) 10.0)
     (= (max-size r1) 10.0)
     (= (current-weight r1) 0.0)
@@ -36,7 +35,7 @@
     (= (loading-progress r1) 0.0)
     (= (unload-progress r1) 0.0)
 
-    ; --- Proprietà Robot 2 (Grande) ---
+    ; --- Proprietà Robot 2 ---
     (= (max-weight r2) 20.0)
     (= (max-size r2) 20.0)
     (= (current-weight r2) 0.0)
@@ -49,7 +48,6 @@
   
   (:goal
     (and 
-        ; Tutti i pacchi devono finire al dispatch-1
         (package-at p1 dispatch-1)
         (package-at p2 dispatch-1)
         (package-at p3 dispatch-1)
