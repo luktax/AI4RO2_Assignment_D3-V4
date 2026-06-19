@@ -24,16 +24,27 @@ Automatic overload detection through events (PDDL+)
 
 ## Repository Structure
 ├── PDDL/
+
 │   ├── domain.pddl
+
 │   ├── problem1.pddl
+
 │   ├── problem2.pddl
+
 │   └── problem3.pddl
+
 │
+
 ├── PDDL+/
+
 │   ├── domain.pddl
+
 │   ├── problem1.pddl
+
 │   ├── problem2.pddl
+
 │   └── problem3.pddl
+
 
 ## Planner
 
