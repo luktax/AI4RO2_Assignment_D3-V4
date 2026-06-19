@@ -72,6 +72,7 @@
                      (package-at ?p ?loc)
                      (not (loaded ?r ?p))
                      (not (busy ?r))
+                     (not (delivery-station ?loc))
                     )
     :effect (and (loading ?r ?p)
                 (assign (loading-progress ?r) 0)
