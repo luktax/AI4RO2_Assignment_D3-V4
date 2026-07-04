@@ -53,3 +53,7 @@ The project was primarily tested using ENHSP, which provides support for the num
 ## HOW TO RUN
 (inside the correct folder)
 -java -jar ~/AI2/ENHSP-Public/enhsp.jar -o warehouse_robotics-domain.pddl -f problem3.pddl
+
+
+## Observation
+The submitted codes and report have been thoroughly reviewed by the teaching assistant, Omar Kashmar.
